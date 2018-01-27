@@ -66,42 +66,23 @@ class ZUMJuniorPort
 	}
 };
 
-
-class ZUMJuniorI2CPorts
-{
-	public:
-	
-	ZUMJuniorI2CPorts(int _p1, int _p2)
-	{
-		p1 = _p1;
-		p2 = _p2;
-	}	
-	virtual ~ZUMJuniorI2CPorts(){}
-	
-	int p1, p2;
-	
-	const int operator[](size_t index) const{
-		switch(index){
-			case 'A':
-				return p1;
-				break;
-			case 'B':
-				return p2;
-				break;
-			default:
-				return -1;
-		}
-	}
-};
-
 class ZUMJuniorPorts
 {
 	public:
 
 	ZUMJuniorPorts(ZUMJuniorPort* _ports)
 	{
+		#ifdef debug
+		Serial.println("ZUMJuniorPorts(ZUMJuniorPort* _ports)");
+		#endif
 		for (int i=0; i<6 ; i++){
-			ports[i]=_ports[i];
+			#ifdef debug
+			Serial.println(_ports[i][0]); Serial.println(_ports[i][1]);
+			#endif
+			ports[i]=ZUMJuniorPort(_ports[i]);
+			#ifdef debug
+			Serial.println(ports[i][0]); Serial.println(ports[i][1]);
+			#endif
 		}
 	}
 		
@@ -131,8 +112,38 @@ class ZUMJuniorPorts
 	}
 	
 	private:	
-	ZUMJuniorPort ports[6];
+		ZUMJuniorPort ports[6];
 };
+
+
+class ZUMJuniorI2CPorts
+{
+	public:
+	
+	ZUMJuniorI2CPorts(int _p1, int _p2)
+	{
+		p1 = _p1;
+		p2 = _p2;
+	}	
+	virtual ~ZUMJuniorI2CPorts(){}
+	
+	int p1, p2;
+	
+	const int operator[](size_t index) const{
+		switch(index){
+			case 'A':
+				return p1;
+				break;
+			case 'B':
+				return p2;
+				break;
+			default:
+				return -1;
+		}
+	}
+};
+
+
 
 } //end namespace BQ
 
