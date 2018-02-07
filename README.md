@@ -5,7 +5,7 @@ BQ ZUM Junior integration on Arduino IDE
 
 ### Prerequisites
 
-You need to install latest [Arduino IDE] (https://www.arduino.cc/en/Main/Software).
+You need to install latest [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 
 This package has been tested on Arduino IDE 1.8.5.
 
