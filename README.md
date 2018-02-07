@@ -6,6 +6,7 @@ BQ ZUM Junior integration on Arduino IDE
 ### Prerequisites
 
 You need to install latest [Arduino IDE] (https://www.arduino.cc/en/Main/Software).
+
 This package has been tested on Arduino IDE 1.8.5.
 
 ### Installing
@@ -20,7 +21,7 @@ Now you can choose your Board **BQ ZUM Junior**.
 ### Flashing Bootloader
 
 The bootloader can be flashed on ZUM Junior using another Arduino board as ISP or any other supported ISP programmer.
-For further support check this [link] (https://www.arduino.cc/en/Tutorial/ArduinoISP).
+For further support check this [link](https://www.arduino.cc/en/Tutorial/ArduinoISP).
 
 ## License
 
@@ -30,4 +31,4 @@ This project is licensed under the GPL v3 license.
 
 This project relies on Arduino IDE to work.
 
-The project is based on [Elektor UNO R4] (https://github.com/ElektorLabs/Arduino/) 
+The project is based on [Elektor UNO R4](https://github.com/ElektorLabs/Arduino/) 
