@@ -29,6 +29,10 @@
 namespace BQ{
 
 
+//define port equivalences
+#define A 5
+#define B 6
+
 class ZUMJuniorI2CPorts
 {
 	public:
@@ -44,10 +48,10 @@ class ZUMJuniorI2CPorts
 	
 	const int operator[](size_t index) const{
 		switch(index){
-			case 'A':
+			case A:
 				return p1;
 				break;
-			case 'B':
+			case B:
 				return p2;
 				break;
 			default:

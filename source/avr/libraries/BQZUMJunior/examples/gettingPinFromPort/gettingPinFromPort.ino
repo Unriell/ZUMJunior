@@ -1,5 +1,3 @@
-#define debug
-
 #include <BQZUMJunior.h>
 #include <BQZUMJuniorPorts.h>
 
@@ -8,9 +6,11 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  int pinNumber = BQ::ZUMJunior::ports[2][1];
-  int i2cNumber = BQ::ZUMJunior::i2cPorts['A'];
-  Serial.println(pinNumber);
+  int pinNumberPort2Wire1 = BQ::ZUMJunior::ports[2][1];
+  int pinNumberPortAWire1 = BQ::ZUMJunior::ports[A][1];
+  int i2cNumber = BQ::ZUMJunior::i2cPorts[B];
+  Serial.println(pinNumberPort2Wire1);
+  Serial.println(pinNumberPortAWire1);
   Serial.println(i2cNumber);
 }
 
