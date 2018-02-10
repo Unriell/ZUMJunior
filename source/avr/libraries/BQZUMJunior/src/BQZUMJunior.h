@@ -49,8 +49,8 @@ public:
     void playTone(int note, int beat);
 
 
-     //ports structure of MakeBlock Orion Board.
-    static const ZUMJuniorPorts ports;
+    //there are 6 ports. We use 7 because the 0 index is not used. Index vary from 1 to 6.
+    static const int ports[7][2];
     static const ZUMJuniorI2CPorts i2cPorts;
 
 protected:

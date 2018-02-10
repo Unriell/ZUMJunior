@@ -8,7 +8,8 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  int ledPin = BQ::ZUMJunior::ports[1][1];
+  int pinNumber = BQ::ZUMJunior::ports[2][1];
+  Serial.println(pinNumber);
 }
 
 void loop() {
