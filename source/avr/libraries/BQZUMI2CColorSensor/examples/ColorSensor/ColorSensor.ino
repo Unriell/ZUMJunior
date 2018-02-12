@@ -1,7 +1,7 @@
 #include <BQZUMJunior.h>
 #include <BQZUMI2CColorSensor.h>
 
-int i2cport = BQ::ZUMJunior::i2cPorts['A'];
+int i2cport = BQ::ZUMJunior::i2cPorts[A];
 BQ::ZUM::I2CColorSensor colorSensor(i2cport);
 
 

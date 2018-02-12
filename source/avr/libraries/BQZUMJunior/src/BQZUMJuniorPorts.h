@@ -28,44 +28,10 @@
 
 namespace BQ{
 
-class ZUMJuniorPort
-{
-	public:
-	
-	//copy constructor
-	ZUMJuniorPort(const ZUMJuniorPort & p){
-		s1 = p.s1;
-		s2 = p.s2;
-	};
-	
-	ZUMJuniorPort(){}
-	
-	ZUMJuniorPort(int a, int b)
-	{
-		s1 = a;
-		s2 = b;
-	}	
-	virtual ~ZUMJuniorPort(){}
-	
-	int s1, s2;
-	
-	const int operator[](size_t index) const{
-		#ifdef debug
-		Serial.print("Port index: "); Serial.println(index);
-		#endif
-		switch(index){
-			case 1:
-				return s1;
-				break;
-			case 2:
-				return s2;
-				break;
-			default:
-				return -1;
-		}
-	}
-};
 
+//define port equivalences
+#define A 5
+#define B 6
 
 class ZUMJuniorI2CPorts
 {
@@ -82,10 +48,10 @@ class ZUMJuniorI2CPorts
 	
 	const int operator[](size_t index) const{
 		switch(index){
-			case 'A':
+			case A:
 				return p1;
 				break;
-			case 'B':
+			case B:
 				return p2;
 				break;
 			default:
@@ -94,45 +60,6 @@ class ZUMJuniorI2CPorts
 	}
 };
 
-class ZUMJuniorPorts
-{
-	public:
-
-	ZUMJuniorPorts(ZUMJuniorPort* _ports)
-	{
-		for (int i=0; i<6 ; i++){
-			ports[i]=_ports[i];
-		}
-	}
-		
-	virtual ~ZUMJuniorPorts(){}
-	
-	const ZUMJuniorPort operator[](size_t index) const{
-		#ifdef debug
-		Serial.print("Ports index: "); Serial.println(index);
-		#endif
-		switch(index){
-			case 1:
-			case 2:
-			case 3:
-			case 4:
-				
-				return ports[index -1];
-				break;
-			case 'A':
-				return ports[4];
-				break;
-			case 'B':
-				return ports[5];
-				break;
-			default:
-				return ZUMJuniorPort(-1,-1);
-		}
-	}
-	
-	private:	
-	ZUMJuniorPort ports[6];
-};
 
 } //end namespace BQ
 

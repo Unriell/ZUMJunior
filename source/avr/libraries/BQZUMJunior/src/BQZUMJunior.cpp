@@ -26,15 +26,17 @@
 #include "Arduino.h"
 #include "BQZUMJunior.h"
 
-
 namespace BQ{
-
-const ZUMJuniorPort ports[6] = {ZUMJuniorPort(A3,3),ZUMJuniorPort(A2,9),ZUMJuniorPort(A5,A4),ZUMJuniorPort(22,23),ZUMJuniorPort(A1,6),ZUMJuniorPort(A0,5)};
-const ZUMJuniorPorts ZUMJunior::ports = ZUMJuniorPorts(ports);
+//initialize port equivalences - index 0 is not used
+const int ZUMJunior::ports[7][2] = {{-1,-1},{A3,3},{A2,9},{A5,A4},{22,23},{A1,6},{A0,5}};
+//initialize i2cports equivalences
 const ZUMJuniorI2CPorts ZUMJunior::i2cPorts(0,1);
 
 ZUMJunior::ZUMJunior():
-        buzzerPin(4)
+        buzzerPin(4),
+        rPin(7),
+        gPin(8),
+        bPin(2)
 {
     //Nothing here
 }
@@ -52,6 +54,12 @@ void ZUMJunior::setup(){
 
 void ZUMJunior::playTone(int note, int beat){
 	tone(buzzerPin, note, beat);
+}
+
+void ZUMJunior::setRGBLED(uint8_t r, uint8_t g, uint8_t b){
+	analogWrite(rPin,255-r);
+	analogWrite(gPin,255-g);
+	analogWrite(bPin,255-b);
 }
 
 } //end namespace

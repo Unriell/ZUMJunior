@@ -48,14 +48,24 @@ public:
      */
     void playTone(int note, int beat);
 
+	/**
+     * Set RGB Led (0,0,0 for switch off)
+     * @param r red color 0-255
+     * @param g red color 0-255
+     * @param b red color 0-255
+     */
+	void setRGBLED(uint8_t r, uint8_t g, uint8_t b);
 
-     //ports structure of MakeBlock Orion Board.
-    static const ZUMJuniorPorts ports;
+    //there are 6 ports. We use 7 because the 0 index is not used. Index vary from 1 to 6.
+    static const int ports[7][2];
     static const ZUMJuniorI2CPorts i2cPorts;
 
 protected:
 
-    const int buzzerPin; /// pin where the buzzer is connected. It is hardwired on the board (D8) 
+    const uint8_t buzzerPin; /// pin where the buzzer is connected. It is hardwired on the board (D8) 
+    const uint8_t rPin; /// green led pin (7)
+    const uint8_t gPin; /// green led pin (8)
+    const uint8_t bPin; /// green led pin (2)
 };
 
 } //end namespace
