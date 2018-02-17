@@ -28,7 +28,7 @@
 
 namespace BQ{
 //initialize port equivalences - index 0 is not used
-const int ZUMJunior::ports[7][2] = {{-1,-1},{9,A2},{3,A3},{5,A0},{6,A1},{22,23},{A4,A5}};
+const int ZUMJunior::ports[7][2] = {{-1,-1},{6,A1},{5,A0},{3,A3},{9,A2},{A4,A5},{22,23}};
 //initialize i2cports equivalences
 const ZUMJuniorI2CPorts ZUMJunior::i2cPorts(0,1);
 
