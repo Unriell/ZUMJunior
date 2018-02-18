@@ -2,8 +2,8 @@
 #include <BQZUMJuniorPorts.h>
 
 //ZUM Junio LED connedted to port 2
-int pinLED1 = BQ::ZUMJunior::ports[2][0];
-int pinLED2 = BQ::ZUMJunior::ports[2][1];
+const uint8_t pinLED1 = BQ::ZUMJunior::ports[2][0];
+const uint8_t pinLED2 = BQ::ZUMJunior::ports[2][1];
 
 void setup() {
   // put your setup code here, to run once:

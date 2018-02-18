@@ -2,7 +2,7 @@
 #include <BQZUMJuniorPorts.h>
 
 //ZUM Junior Button connedted to port 2. ATTENTION-> Button is on wire 1.
-int pinButton = BQ::ZUMJunior::ports[2][1];
+const uint8_t pinButton = BQ::ZUMJunior::ports[2][1];
 
 void setup() {
   // put your setup code here, to run once:
