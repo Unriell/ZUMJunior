@@ -155,7 +155,7 @@ void I2CColorSensor::getColor(float *f_Red, float *f_Green, float *f_Blue, float
 	*f_Clear = ui16_color;
 }
 
-Colors I2CColorSensor::whichColor(){
+I2CColorSensor::Colors I2CColorSensor::whichColor(){
 	//GET COLOR
   
   
@@ -191,14 +191,14 @@ Colors I2CColorSensor::whichColor(){
   Serial.println();
   #endif //DEBUG
   
-  if ( (red > 130) && (green > 130) && (blue > 130) ) return WHITE;
-  if ( (red < 50) && (green < 50) && (blue < 50) ) return BLACK;
-  if (red > (green+blue)) return RED;
-  if (green > (red + blue)) return GREEN;
-  if (blue > (green + red)) return BLUE;
-  if ( (red > 130) || (green > 130) || (blue > 130) ) return WHITE;
-  if ( (red < 50) || (green < 50) || (blue < 50) ) return BLACK;
-  return WHITE;
+  if ( (red > 130) && (green > 130) && (blue > 130) ) return I2CColorSensor::WHITE;
+  if ( (red < 50) && (green < 50) && (blue < 50) ) return I2CColorSensor::BLACK;
+  if (red > (green+blue)) return I2CColorSensor::RED;
+  if (green > (red + blue)) return I2CColorSensor::GREEN;
+  if (blue > (green + red)) return I2CColorSensor::BLUE;
+  if ( (red > 130) || (green > 130) || (blue > 130) ) return I2CColorSensor::WHITE;
+  if ( (red < 50) || (green < 50) || (blue < 50) ) return I2CColorSensor::BLACK;
+  return I2CColorSensor::WHITE;
   
 }
 

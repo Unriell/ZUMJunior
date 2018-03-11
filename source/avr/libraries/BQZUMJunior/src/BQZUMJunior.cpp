@@ -36,7 +36,9 @@ ZUMJunior::ZUMJunior():
         buzzerPin(4),
         rPin(7),
         gPin(8),
-        bPin(2)
+        bPin(2),
+        rgbColors{{255,0,0},{0,255,0},{0,0,255},{255,255,0},{255,0,255},{255,255,255},{0,0,0}},
+        tones{261,294,329,349,392,440,493}
 {
     //Nothing here
 }
@@ -51,9 +53,16 @@ void ZUMJunior::setup(){
     pinMode(buzzerPin,OUTPUT);
 }
 
+void ZUMJunior::setRGBLEDColor(RGBColors color){
+		setRGBLED(rgbColors[color][0],rgbColors[color][1],rgbColors[color][2]);
+	}
 
 void ZUMJunior::playTone(int note, int beat){
 	tone(buzzerPin, note, beat);
+}
+
+void ZUMJunior::play(Tones note, int beat){
+	tone(buzzerPin, tones[note], beat);
 }
 
 void ZUMJunior::setRGBLED(uint8_t r, uint8_t g, uint8_t b){

@@ -13,7 +13,7 @@ void setup() {
 
 void loop(){
   
-  BQ::ZUM::Colors color = colorSensor.whichColor();
+  BQ::ZUM::I2CColorSensor::Colors color = colorSensor.whichColor();
   
   switch(color){
     case 0: Serial.println("RED");break;
