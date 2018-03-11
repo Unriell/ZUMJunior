@@ -94,6 +94,18 @@ void I2C7SegmentDisplay::displayChar(char c_disp1, char c_disp0)
 	displayChar0(c_disp0);			
 }
 
+void I2C7SegmentDisplay::displayString(String s){
+	if (s.length() == 1){
+		displayChar(' ',s[0]);
+	}else{
+		displayChar(s[0],s[1]);
+	}
+}
+
+void I2C7SegmentDisplay::displayInt(int num){
+	displayString(String(num));
+}
+
 void I2C7SegmentDisplay::displayPos0(uint8_t i_disp0){
 	writeRegister(TCA9535_REG_OP0, i_disp0);
 }

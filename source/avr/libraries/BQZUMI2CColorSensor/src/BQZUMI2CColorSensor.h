@@ -98,11 +98,20 @@ typedef enum {
 	COLOR_I2C_fail
 } ColorStat;
 
+typedef enum{
+	RED,
+	GREEN,
+	BLUE,
+	WHITE,
+	BLACK
+} Colors;
+
 class	I2CColorSensor {
 	public:
 		I2CColorSensor(uint8_t ui8_i2cport);
 		void	setup();
 		void	getColor(float *ui16_Red, float *ui16_Green, float *ui16_Blue, float *ui16_Clear);
+		Colors	whichColor();
 	
 	private:
 		const uint8_t	colorsens_i2cport;

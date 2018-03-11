@@ -28,8 +28,8 @@
  #include "WProgram.h"
 #endif
 
-#include <Wire.h>
 
+#include <Wire.h>
 #include <BQZUMI2CColorSensor.h>
 
 namespace BQ{ namespace ZUM{
@@ -153,6 +153,53 @@ void I2CColorSensor::getColor(float *f_Red, float *f_Green, float *f_Blue, float
 	
 	ui16_color = (readRegister(BH1745NUC_REG_CLEAR_MSB)<<8) + (readRegister(BH1745NUC_REG_CLEAR_LSB));
 	*f_Clear = ui16_color;
+}
+
+Colors I2CColorSensor::whichColor(){
+	//GET COLOR
+  
+  
+  float     f_Red = 0;
+  float     f_Green = 0;
+  float     f_Blue = 0;
+  float     f_Clear = 0;
+  float red,green,blue,clear;
+  red=0;green=0;blue=0;
+  
+  for(int i=0;i<100;i++){
+    getColor(&f_Red, &f_Green, &f_Blue, &f_Clear);
+    red+=f_Red;
+    green+=f_Green;
+    blue+=f_Blue;
+    clear+=f_Clear;
+  }
+  
+  red=red/100;
+  green=green/100;
+  blue=blue/100;
+  clear=clear/100;
+  
+  #ifdef DEBUG
+  Serial.print("COLOR Red:");
+  Serial.print(red);
+  Serial.print("\tGreen:");
+  Serial.print(green);
+  Serial.print("\tBlue:");
+  Serial.print(blue);
+  Serial.print("\tClear:");
+  Serial.print(clear);
+  Serial.println();
+  #endif //DEBUG
+  
+  if ( (red > 130) && (green > 130) && (blue > 130) ) return WHITE;
+  if ( (red < 50) && (green < 50) && (blue < 50) ) return BLACK;
+  if (red > (green+blue)) return RED;
+  if (green > (red + blue)) return GREEN;
+  if (blue > (green + red)) return BLUE;
+  if ( (red > 130) || (green > 130) || (blue > 130) ) return WHITE;
+  if ( (red < 50) || (green < 50) || (blue < 50) ) return BLACK;
+  return WHITE;
+  
 }
 
 }} //end namespace BQ::ZUM
