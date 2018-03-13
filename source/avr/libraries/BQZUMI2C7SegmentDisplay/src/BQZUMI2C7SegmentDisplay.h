@@ -22,8 +22,8 @@
  * 
  */
 
-#ifndef BITBLOQI2C7SEGMENT_H
-#define BITBLOQI2C7SEGMENT_H
+#ifndef BQZUMI2C7SEGMENT_H
+#define BQZUMI2C7SEGMENT_H
 
 namespace BQ{ namespace ZUM{
 
@@ -112,13 +112,25 @@ class	I2C7SegmentDisplay {
 		I2C7SegmentDisplay(uint8_t ui8_port);
 		void	setup();
 		void	display(uint8_t i_disp1, uint8_t i_disp0);
+		void	displayString(String s);
+		void	displayInt(int num);
 		void	displayChar(char c_disp1, char c_disp0);
+		void    displayInPos(uint8_t pos, uint8_t i_disp);
+		void	displayCharInPos(uint8_t pos, char c_disp);
+		
+		void	displayPos0(uint8_t i_disp0);
+		void	displayPos1(uint8_t i_disp1);
+		void	displayChar0(char c_disp0);
+		void	displayChar1(char c_disp1);
+		
+		
 	
 	private:
 		const uint8_t	segmentdisplay_i2cport;
 		SegmentStat		begin();
 		void			writeRegister(uint8_t ui8_Reg, uint8_t ui8_data);
 		uint8_t			readRegister(uint8_t ui8_Reg);
+		
 };
 
 }} //end namespace BQ::ZUM

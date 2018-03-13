@@ -35,6 +35,29 @@ public:
     ZUMJunior(); // public constructor
     virtual ~ZUMJunior(); // virtual public destructor
 
+
+
+	typedef enum {
+		RED,
+		GREEN,
+		BLUE,
+		YELLOW,
+		PINK,
+		WHITE,
+		BLACK
+		} RGBColors;
+		
+	typedef enum{
+		DO,
+		RE,
+		MI,
+		FA,
+		SOL,
+		LA,
+		SI
+	} Tones;
+
+
     /**
      * Sets pinmode of sensors and actuators (as in standard Arduino setup)
      */
@@ -49,19 +72,33 @@ public:
     void playTone(int note, int beat);
 
 	/**
+     * Play tone
+     * @param note tone form list
+     * @param beat time active
+     */
+    void play(Tones note, int beat);
+
+	/**
      * Set RGB Led (0,0,0 for switch off)
      * @param r red color 0-255
      * @param g red color 0-255
      * @param b red color 0-255
      */
 	void setRGBLED(uint8_t r, uint8_t g, uint8_t b);
+	
+	void setRGBLEDColor(RGBColors color);
 
     //there are 6 ports. We use 7 because the 0 index is not used. Index vary from 1 to 6.
     static const int ports[7][2];
     static const ZUMJuniorI2CPorts i2cPorts;
 
+
+
 protected:
 
+
+	const uint8_t rgbColors[7][3];
+	const int tones[7];
     const uint8_t buzzerPin; /// pin where the buzzer is connected. It is hardwired on the board (D8) 
     const uint8_t rPin; /// green led pin (7)
     const uint8_t gPin; /// green led pin (8)

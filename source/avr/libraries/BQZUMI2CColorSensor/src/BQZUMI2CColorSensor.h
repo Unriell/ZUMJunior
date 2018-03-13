@@ -98,17 +98,31 @@ typedef enum {
 	COLOR_I2C_fail
 } ColorStat;
 
+
+
 class	I2CColorSensor {
 	public:
 		I2CColorSensor(uint8_t ui8_i2cport);
 		void	setup();
+		
+		typedef enum{
+			RED,
+			GREEN,
+			BLUE,
+			WHITE,
+			BLACK
+		} Colors;
+		
 		void	getColor(float *ui16_Red, float *ui16_Green, float *ui16_Blue, float *ui16_Clear);
+		Colors	whichColor();
 	
 	private:
 		const uint8_t	colorsens_i2cport;
 		ColorStat		begin();
 		uint8_t 		readRegister(uint8_t ui8_Reg);
 		void 			writeRegister(uint8_t ui8_Reg, uint8_t ui8_data);
+		
+		
 };
 
 }} //end namespace BQ::ZUM

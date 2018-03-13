@@ -2,8 +2,8 @@
 #include <BQZUMJuniorPorts.h>
 
 //slider connedted to port 1
-int pinSlider1 = BQ::ZUMJunior::ports[1][0];
-int pinSlider2 = BQ::ZUMJunior::ports[1][1];
+const uint8_t pinSlider1 = BQ::ZUMJunior::ports[1][0];
+const uint8_t pinSlider2 = BQ::ZUMJunior::ports[1][1];
 
 void setup() {
   // put your setup code here, to run once:

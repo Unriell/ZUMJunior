@@ -1,18 +1,23 @@
 #include <BQZUMJunior.h>
 #include <BQZUMJuniorPorts.h>
 
-//ZUM Junior Button connedted to port 2. ATTENTION-> Button is on wire 1.
-int pinButton = BQ::ZUMJunior::ports[2][1];
+//connected to port 2
+const uint8_t botonPin = BQ::ZUMJunior::ports[2][0];
+
+//it could be connected to any port, including A, B, for example
+//const uint8_t botonPin = BQ::ZUMJunior::ports[A][0];
+
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(pinButton,INPUT);
+  Serial.println("Testing button");
+  pinMode(botonPin,INPUT);
 
 }
 
 void loop() {
-  Serial.println(digitalRead(pinButton));
+  Serial.println(digitalRead(botonPin));
   delay(1000);
-
 }
+

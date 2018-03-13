@@ -2,18 +2,21 @@
 #include <BQZUMJuniorPorts.h>
 #include <Servo.h>
 
-//ZUM Junior Servo connedted to port 2. ATTENTION-> Servo is on wire 1.
-int pinServo = BQ::ZUMJunior::ports[2][1];
+
 Servo servo;
+
+//connected to port 2
+const uint8_t servoPin = BQ::ZUMJunior::ports[2][0];
+
+//it could be connected to any port, including A, B, for example
+//const uint8_t servoPin = BQ::ZUMJunior::ports[A][0];
+
+
 void setup() {
   // put your setup code here, to run once:
-  servo.attach(pinServo);
-
+  servo.attach(servoPin);
 }
 
 void loop() {
-  servo.write(0);
-  delay(1000);
   servo.write(180);
-  delay(1000);
 }

@@ -28,7 +28,7 @@
 
 namespace BQ{
 //initialize port equivalences - index 0 is not used
-const int ZUMJunior::ports[7][2] = {{-1,-1},{D9,A2},{D3,A3},{D5,A0},{D6,A1},{D22,D23},{A4,A5}};
+const int ZUMJunior::ports[7][2] = {{-1,-1},{6,A1},{5,A0},{3,A3},{9,A2},{A4,A5},{22,23}};
 //initialize i2cports equivalences
 const ZUMJuniorI2CPorts ZUMJunior::i2cPorts(0,1);
 
@@ -36,7 +36,9 @@ ZUMJunior::ZUMJunior():
         buzzerPin(4),
         rPin(7),
         gPin(8),
-        bPin(2)
+        bPin(2),
+        rgbColors{{255,0,0},{0,255,0},{0,0,255},{255,255,0},{255,0,255},{255,255,255},{0,0,0}},
+        tones{261,294,329,349,392,440,493}
 {
     //Nothing here
 }
@@ -51,9 +53,16 @@ void ZUMJunior::setup(){
     pinMode(buzzerPin,OUTPUT);
 }
 
+void ZUMJunior::setRGBLEDColor(RGBColors color){
+		setRGBLED(rgbColors[color][0],rgbColors[color][1],rgbColors[color][2]);
+	}
 
 void ZUMJunior::playTone(int note, int beat){
 	tone(buzzerPin, note, beat);
+}
+
+void ZUMJunior::play(Tones note, int beat){
+	tone(buzzerPin, tones[note], beat);
 }
 
 void ZUMJunior::setRGBLED(uint8_t r, uint8_t g, uint8_t b){
