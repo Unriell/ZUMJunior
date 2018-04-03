@@ -1,30 +1,30 @@
 /*
  * BQZUMI2CColorSensor.h
- * 
+ *
  * Copyright 2018 Alberto Valero <alberto.valero@bq.com>
- *                Pablo García <pablo.garcia@bq.com> 
+ *                Pablo García <pablo.garcia@bq.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
- * 
- * 
+ *
+ *
  */
- 
+
 #ifndef BQZUMI2CCOLORSENSOR_H
 #define BQZUMI2CCOLORSENSOR_H
- 
+
 #ifndef BH1745NUC_h
 #define BH1745NUC_h
 
@@ -104,7 +104,7 @@ class	I2CColorSensor {
 	public:
 		I2CColorSensor(uint8_t ui8_i2cport);
 		void	setup();
-		
+
 		typedef enum{
 			RED,
 			GREEN,
@@ -112,17 +112,19 @@ class	I2CColorSensor {
 			WHITE,
 			BLACK
 		} Colors;
-		
+
 		void	getColor(float *ui16_Red, float *ui16_Green, float *ui16_Blue, float *ui16_Clear);
+    float getComponent(uint8_t);
+
 		Colors	whichColor();
-	
+
 	private:
 		const uint8_t	colorsens_i2cport;
 		ColorStat		begin();
 		uint8_t 		readRegister(uint8_t ui8_Reg);
 		void 			writeRegister(uint8_t ui8_Reg, uint8_t ui8_data);
-		
-		
+
+
 };
 
 }} //end namespace BQ::ZUM
