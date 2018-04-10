@@ -16,7 +16,7 @@ void loop() {
   ui16_Distance = ALPSSensor.getDistance();
   
   Serial.print("DISTANCE:");
-  Serial.print(ui16_Distance);
+  Serial.println(ui16_Distance);
 
   delay(500);
 }
