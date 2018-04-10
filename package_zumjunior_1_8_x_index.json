@@ -40,7 +40,7 @@
             }
           ]
         },
-		{
+        {
           "name": "ZUM Junior for Arduino 1.8.x",
           "architecture": "avr",
           "version": "0.2.0",
