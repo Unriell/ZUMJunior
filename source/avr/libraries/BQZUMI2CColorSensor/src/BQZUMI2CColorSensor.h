@@ -114,7 +114,7 @@ class	I2CColorSensor {
 		} Colors;
 
 		void	getColor(float *ui16_Red, float *ui16_Green, float *ui16_Blue, float *ui16_Clear);
-    float getComponent(uint8_t);
+		float	getComponent(uint8_t);
 
 		Colors	whichColor();
 
