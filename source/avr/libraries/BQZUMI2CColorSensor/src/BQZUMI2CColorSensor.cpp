@@ -131,16 +131,19 @@ uint8_t I2CColorSensor::readRegister(uint8_t ui8_Reg)
   return ui8_data;
 }
 
-void I2I2CColorSensor::getComponent(uint8_t component){
-  float r,g,b;
-  getColor(r,g,b);
-  switch(component){
+float I2CColorSensor::getComponent(uint8_t ui8_component){
+  float     f_Red	= 0;
+  float     f_Green = 0;
+  float     f_Blue	= 0;
+  float     f_Clear = 0;
+  getColor(&f_Red,&f_Green,&f_Blue,&f_Clear);
+  switch(ui8_component){
     case 0:
-      return r;
+      return f_Red;
     case 1:
-      return g;
+      return f_Green;
     case 2:
-      return b;
+      return f_Blue;
     default:
       return 0;
   }
@@ -172,49 +175,48 @@ void I2CColorSensor::getColor(float *f_Red, float *f_Green, float *f_Blue, float
 
 I2CColorSensor::Colors I2CColorSensor::whichColor(){
 	//GET COLOR
+	float	f_Red	= 0;
+	float	f_Green	= 0;
+	float	f_Blue	= 0;
+	float	f_Clear	= 0;
+	float 	f_RedAverage 	= 0;
+	float	f_GreenAverage	= 0;
+	float	f_BlueAverage	= 0;
+	float	f_ClearAverage	= 0;
 
+	for(int i_Cont=0;i_Cont<100;i_Cont++){
+		getColor(&f_Red, &f_Green, &f_Blue, &f_Clear);
+		f_RedAverage+=f_Red;
+		f_GreenAverage+=f_Green;
+		f_BlueAverage+=f_Blue;
+		f_ClearAverage+=f_Clear;
+	}
 
-  float     f_Red = 0;
-  float     f_Green = 0;
-  float     f_Blue = 0;
-  float     f_Clear = 0;
-  float red,green,blue,clear;
-  red=0;green=0;blue=0;
-
-  for(int i=0;i<100;i++){
-    getColor(&f_Red, &f_Green, &f_Blue, &f_Clear);
-    red+=f_Red;
-    green+=f_Green;
-    blue+=f_Blue;
-    clear+=f_Clear;
-  }
-
-  red=red/100;
-  green=green/100;
-  blue=blue/100;
-  clear=clear/100;
+  f_RedAverage		= f_RedAverage/100;
+  f_GreenAverage	= f_GreenAverage/100;
+  f_BlueAverage		= f_BlueAverage/100;
+  f_ClearAverage	= f_ClearAverage/100;
 
   #ifdef DEBUG
   Serial.print("COLOR Red:");
-  Serial.print(red);
+  Serial.print(f_RedAverage);
   Serial.print("\tGreen:");
-  Serial.print(green);
+  Serial.print(f_GreenAverage);
   Serial.print("\tBlue:");
-  Serial.print(blue);
+  Serial.print(f_BlueAverage);
   Serial.print("\tClear:");
-  Serial.print(clear);
+  Serial.print(f_ClearAverage);
   Serial.println();
   #endif //DEBUG
 
-  if ( (red > 130) && (green > 130) && (blue > 130) ) return I2CColorSensor::WHITE;
-  if ( (red < 50) && (green < 50) && (blue < 50) ) return I2CColorSensor::BLACK;
-  if (red > (green+blue)) return I2CColorSensor::RED;
-  if (green > (red + blue)) return I2CColorSensor::GREEN;
-  if (blue > (green + red)) return I2CColorSensor::BLUE;
-  if ( (red > 130) || (green > 130) || (blue > 130) ) return I2CColorSensor::WHITE;
-  if ( (red < 50) || (green < 50) || (blue < 50) ) return I2CColorSensor::BLACK;
+  if ( (f_RedAverage > 130) && (f_GreenAverage > 130) && (f_BlueAverage > 130) ) return I2CColorSensor::WHITE;
+  if ( (f_RedAverage < 50) && (f_GreenAverage < 50) && (f_BlueAverage < 50) ) return I2CColorSensor::BLACK;
+  if ( f_RedAverage > (f_GreenAverage+f_BlueAverage)) return I2CColorSensor::RED;
+  if ( f_GreenAverage > (f_RedAverage + f_BlueAverage)) return I2CColorSensor::GREEN;
+  if ( f_BlueAverage > (f_GreenAverage + f_RedAverage)) return I2CColorSensor::BLUE;
+  if ( (f_RedAverage > 130) || (f_GreenAverage > 130) || (f_BlueAverage > 130) ) return I2CColorSensor::WHITE;
+  if ( (f_RedAverage < 50) || (f_GreenAverage < 50) || (f_BlueAverage < 50) ) return I2CColorSensor::BLACK;
   return I2CColorSensor::WHITE;
-
 }
 
 }} //end namespace BQ::ZUM
