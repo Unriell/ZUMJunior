@@ -1,4 +1,4 @@
-# BQ ZUM Junior ATmega328PB Platform Configuration for Arduino 1.8.5
+# BQ ZUM Junior and ZUM Core 2 ATmega328PB Platform Configuration for Arduino 1.8.5
 #
 # For more information see:
 # - https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
