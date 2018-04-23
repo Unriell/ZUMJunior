@@ -35,6 +35,6 @@ This project is licensed under the GPL v3 license.
 
 ## Credits
 
-This project relies on Arduino IDE to work.
+This project relies on [Arduino IDE](https://github.com/arduino/Arduino) to work.
 
 The project is based on [Elektor UNO R4](https://github.com/ElektorLabs/Arduino/) 
