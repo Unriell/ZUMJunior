@@ -70,6 +70,37 @@
               "version": "6.3.0-arduino2"
             }
           ]
+        },
+		{
+          "name": "ZUM Junior for Arduino 1.8.x",
+          "architecture": "avr",
+          "version": "0.2.1",
+          "category": "Contributed",
+          "help": {
+            "online": "http://www.bq.com"
+          },
+          "url": "https://github.com/bq/ZUMJunior/releases/download/0.2.1/zum-junior-1.8.x-0.2.1.zip",
+          "archiveFileName": "zum-junior-1.8.x-0.2.1.zip",
+          "checksum": "SHA-256:02772fb9dd32187f3e8ed15d3932fb688f9297c5e9d5010eb3fe2d3aa953a7b1",
+          "size": "253984",
+          "help": {
+                    "online": "http://www.bq.com"
+          },
+          "boards": [
+            {"name": "ZUM Junior"}
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "avr-gcc",
+              "version": "4.9.2-atmel3.5.3-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "avrdude",
+              "version": "6.3.0-arduino2"
+            }
+          ]
         }
       ],
       "tools":[]
