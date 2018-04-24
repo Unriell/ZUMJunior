@@ -1,6 +1,8 @@
 # ZUMJunior
 BQ ZUM Junior integration on Arduino IDE
 
+Please, visit the [project wiki](https://github.com/bq/ZUMJunior/wiki) for more information.
+
 ## Getting Started
 
 ### Prerequisites
