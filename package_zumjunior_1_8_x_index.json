@@ -21,9 +21,6 @@
           "archiveFileName": "zum-junior-1.8.x-0.1.0.zip",
           "checksum": "SHA-256:06043ea645f2b3fc74aefbb05dbc62fda9ce232dd9165e2f7ec7943f7bc7dc11",
           "size": "242302",
-          "help": {
-                    "online": "http://www.bq.com"
-          },
           "boards": [
             {"name": "ZUM Junior"}
           ],
@@ -52,9 +49,6 @@
           "archiveFileName": "zum-junior-1.8.x-0.2.0.zip",
           "checksum": "SHA-256:9dd60e762c8682a6da1634107c1c6702c09884347ab3287815a3bcecbae6e07f",
           "size": "253947",
-          "help": {
-                    "online": "http://www.bq.com"
-          },
           "boards": [
             {"name": "ZUM Junior"}
           ],
@@ -83,9 +77,6 @@
           "archiveFileName": "zum-junior-1.8.x-0.2.1.zip",
           "checksum": "SHA-256:02772fb9dd32187f3e8ed15d3932fb688f9297c5e9d5010eb3fe2d3aa953a7b1",
           "size": "253984",
-          "help": {
-                    "online": "http://www.bq.com"
-          },
           "boards": [
             {"name": "ZUM Junior"}
           ],
@@ -114,9 +105,6 @@
           "archiveFileName": "zum-junior-1.8.x-0.2.2.zip",
           "checksum": "SHA-256:36ba5b527f3e8bf460471f99b486ec3588e87de2b723d684af167107e8e4b103",
           "size": "295317",
-          "help": {
-                    "online": "http://www.bq.com"
-          },
           "boards": [
             {"name": "ZUM Junior"}
           ],
